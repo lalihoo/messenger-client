@@ -3,8 +3,7 @@ import logo from './logo.svg';
 
 const LeftMenuChat = (props) => {
   const handleChatClick = () => {
-    // Вызываем функцию, переданную из родительского компонента, и передаем chat_id
-    props.onChatClick(props.chat_id);
+    props.onChatClick(props.chat_id, props.chat_name);
   }
 
   return (
