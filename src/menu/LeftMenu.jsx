@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import logo from './logo.svg';
 import LeftMenuChat from "./LeftMenuChat";
-import MainChat from "./MainChat";
+import MainChat from "../chat/MainChat";
 
 const LeftMenu = (props) => {
     const [chats, setChats] = useState([]);

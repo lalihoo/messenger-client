@@ -1,12 +1,12 @@
 import './App.css';
-import LeftMenu from './LeftMenu';
+import LeftMenu from './menu/LeftMenu';
 
 function App() {
   return (
     <div className="App">
       <LeftMenu></LeftMenu>
       <div className='main-chat-container' id="portal-root">
-      
+
       </div>
     </div>
   );
