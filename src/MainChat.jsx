@@ -1,62 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactDOM from "react-dom";
 
 const MainChat = (props) => {
-  const [message, setMessage] = useState("");
-  const CHAT_ID = 1;
+  const CHAT_ID = props.chat_id;
   const [messages, setMessages] = useState([]);
+  const api_url = "https://pleasing-hopefully-tetra.ngrok-free.app/api";
 
-  // Обработчик для отправки сообщения
-  const sendMessage = () => {
-    const postData = {
-      content: message,
-      chat: CHAT_ID,
-      sender: 1, // Замените на актуальный ID отправителя
-    };
-
-    // URL сервера, куда отправляем POST-запрос
-    const serverUrl = "https://pleasing-hopefully-tetra.ngrok-free.app/api";
-
-    // Выполняем POST-запрос
-    axios
-      .post(serverUrl + '/messages/', postData)
-      .then((response) => {
-        // Обработка успешного ответа от сервера, если необходимо
-        console.log("Успешно отправлен POST-запрос", response.data);
-        // Обновляем состояние, чтобы отразить новое сообщение в списке
-        setMessages([...messages, response.data]);
-        setMessage(""); // Очищаем поле ввода сообщения
+  useEffect(() => {
+    axios.get(api_url + '/messages/')
+      .then(response => {
+        const filteredMessages = response.data.filter(message => message.chat === CHAT_ID);
+        setMessages(filteredMessages);
       })
-      .catch((error) => {
-        // Обработка ошибки
-        console.error("Ошибка при выполнении POST-запроса", error);
+      .catch(error => {
+        console.error('Ошибка при получении данных с сервера:', error);
       });
-  };
+  }, [CHAT_ID]);
 
-  return (
+  // Создайте портал для рендеринга в корневой элемент .App
+  return ReactDOM.createPortal(
     <div className="main_chat">
       <div className="chat_information">
-        <div className="chat_name">{props.chat_name}</div>
+        <div className="chat_name">
+          {props.chat_name}
+        </div>
       </div>
       <div className="messages_container">
-        {messages.map((message) => (
+        {messages.map(message => (
           <div key={message.id} className="message">
             <p>{message.content}</p>
             <p>Отправлено: {message.created_at}</p>
           </div>
         ))}
       </div>
-      <div className="message_input">
-        <input
-          type="text"
-          placeholder="Введите сообщение"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button onClick={sendMessage}>Отправить</button>
-      </div>
-    </div>
+    </div>,
+    document.getElementById("portal-root") // Указать ID корневого элемента, куда нужно рендерить
   );
-};
+}
 
 export default MainChat;
+

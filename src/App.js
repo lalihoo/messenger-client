@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <LeftMenu></LeftMenu>
-      <MainChat></MainChat>
+      <div id="portal-root"></div> {/* Элемент для портала */}
     </div>
   );
 }
