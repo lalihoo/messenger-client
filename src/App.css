@@ -6,3 +6,8 @@
   --message-background-root-color: white;
   --message-background-user-color: #D9D9D9;
 }
+
+html{
+  background-color: var(--background-color);
+  color: var(--menu-main-text-color);
+}

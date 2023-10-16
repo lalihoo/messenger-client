@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../css/left-menu.css'
 
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import LeftMenuChat from "./LeftMenuChat";
 import MainChat from "../chat/MainChat";
 

@@ -1,4 +1,5 @@
 import './App.css';
+import './css/main-chat.css'
 import LeftMenu from './menu/LeftMenu';
 
 function App() {

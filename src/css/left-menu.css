@@ -1,0 +1,51 @@
+@import url(../App.css);
+.left-menu {
+    width: 300px;
+    height: 100vh;
+    border-right: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    
+}
+.left-menu-info {
+}
+.current-user-information {
+    display: flex;
+    align-items: center;
+}
+.current-user-profile-image-container {
+    border: 100%;
+    width: 120px;
+    height: 120px;
+}
+.currentu-user-profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.current-user-profile-name {
+}
+.chats-container {
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.left_menu_chat {
+    display: flex;
+    align-items: center;
+    transition: all 0.15s;
+}
+.left_menu_chat:hover{
+    cursor: pointer;
+    background-color: rgb(92, 92, 92);
+}
+.left_menu_chat_user_img_container {
+}
+.root_user_avatar {
+}
+.left_menu_chat_user_name {
+}
+

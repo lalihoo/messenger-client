@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactDOM from "react-dom";
+import '../css/main-chat.css'
 
 const MainChat = (props) => {
   const CHAT_ID = props.chat_id;
