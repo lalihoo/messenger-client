@@ -38,7 +38,10 @@ const MainChat = (props) => {
       </div>
       <div className="messages_container">
         {messages.map(message => (
-          <div key={message.id} className="message">
+          <div
+            key={message.id}
+            className={`message ${message.sender === props.user_id ? 'usermessage' : ''}`}
+          >
             <p className="message_text">{message.content}</p>
             <p className="message_data">{formatDateTime(message.created_at)}</p>
           </div>

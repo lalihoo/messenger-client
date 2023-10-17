@@ -34,10 +34,14 @@
     word-wrap: break-word;
     /* Перенос текста на следующую строку, если не помещается внутри контейнера */
     display: inline-block;
-    background-color: var(--message-background-root-color);
+    background-color: var(--message-background-user-color);
     color: black;
     border-radius: 10px;
     padding: 5px;
+}
+
+.usermessage{
+    background-color: var(--message-background-root-color);
 }
 
 .message_text {

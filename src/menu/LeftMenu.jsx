@@ -47,7 +47,7 @@ const LeftMenu = (props) => {
                     <LeftMenuChat key={chat.id} chat_id={chat.id} chat_name={chat.name} onChatClick={handleChatClick} />
                 ))}
             </div>
-            {selectedChatId && selectedChatName && <MainChat chat_name={selectedChatName} chat_id={selectedChatId} />}
+            {selectedChatId && selectedChatName && <MainChat user_id={props.user_id} chat_name={selectedChatName} chat_id={selectedChatId} />}
         </div>
     );
 }
