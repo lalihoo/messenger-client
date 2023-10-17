@@ -11,7 +11,7 @@ const LeftMenu = (props) => {
     const [selectedChatId, setSelectedChatId] = useState(null);
     const [selectedChatName, setSelectedChatName] = useState(null);
 
-    const USER_ID = 1;
+    const USER_ID = props.user_id;
     const api_url = "https://pleasing-hopefully-tetra.ngrok-free.app/api";
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const LeftMenu = (props) => {
                         <img className='currentu-user-profile-image' alt="avatar" width={100} height={100} src={logo}></img>
                     </div>
                     <div className='current-user-profile-name'>
-                        Name__TEST
+                        {props.username}
                     </div>
                 </div>
             </div>

@@ -8,6 +8,16 @@ const MainChat = (props) => {
   const [messages, setMessages] = useState([]);
   const api_url = "https://pleasing-hopefully-tetra.ngrok-free.app/api";
 
+  // Функция для форматирования даты и времени
+  const formatDateTime = (isoDate) => {
+    const dateTime = new Date(isoDate);
+    const day = dateTime.getDate().toString().padStart(2, '0');
+    const month = (dateTime.getMonth() + 1).toString().padStart(2, '0');
+    const hours = dateTime.getHours().toString().padStart(2, '0');
+    const minutes = dateTime.getMinutes().toString().padStart(2, '0');
+    return `${day}.${month} ${hours}:${minutes}`;
+  }
+
   useEffect(() => {
     axios.get(api_url + '/messages/')
       .then(response => {
@@ -19,7 +29,6 @@ const MainChat = (props) => {
       });
   }, [CHAT_ID]);
 
-  // Создайте портал для рендеринга в корневой элемент .App
   return ReactDOM.createPortal(
     <div className="main_chat">
       <div className="chat_information">
@@ -30,15 +39,14 @@ const MainChat = (props) => {
       <div className="messages_container">
         {messages.map(message => (
           <div key={message.id} className="message">
-            <p>{message.content}</p>
-            <p>Отправлено: {message.created_at}</p>
+            <p className="message_text">{message.content}</p>
+            <p className="message_data">{formatDateTime(message.created_at)}</p>
           </div>
         ))}
       </div>
     </div>,
-    document.getElementById("portal-root") // Указать ID корневого элемента, куда нужно рендерить
+    document.getElementById("portal-root")
   );
 }
 
 export default MainChat;
-
