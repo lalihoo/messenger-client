@@ -21,7 +21,7 @@ const Authentication = ({ onSuccessfulAuthentication }) => {
             console.log('Authentication successful', response.data);
 
             // Вызываем функцию для обработки успешной аутентификации
-            onSuccessfulAuthentication(response.data);
+            onSuccessfulAuthentication(response.data, true);
         } catch (error) {
             // Обработка ошибки аутентификации
             console.error('Authentication failed', error.response.data);
